@@ -5944,7 +5944,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1999381172068971698}
-  - component: {fileID: 7691496236093704847}
   m_Layer: 0
   m_Name: 4 - RD
   m_TagString: Untagged
@@ -5968,32 +5967,6 @@ Transform:
   - {fileID: 835720138197576199}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7691496236093704847
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3867577358728013441}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e770829d6df6b44aafb84a834fc6a5c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  regenerate: 0
-  tiles:
-    list:
-    - item: {fileID: 8066392177936255945, guid: e6e1e5d997b3e3849b91112c3d3adf29, type: 3}
-      weight: 0
-    - item: {fileID: 8066392177936255945, guid: dcc4f3c8113662e4981d3b3ff2c0a052, type: 3}
-      weight: 0
-  tileDimentions: {x: 1, y: 0.1, z: 1}
-  gridWidth: 10
-  gridLength: 10
-  props:
-    list: []
-  propMaxOffset: 0
-  minimumPathLength: 20
 --- !u!1 &3896217175868086045
 GameObject:
   m_ObjectHideFlags: 0

@@ -7,17 +7,24 @@ public class MazeGenerator : MonoBehaviour
 
     private List<Vector2Int> generatedChunks = new List<Vector2Int>();
 
+
+    [SerializeField] private Transform player;
     [SerializeField] private Vector3 playerPos;
 
     [SerializeField] private List<GameObject> chunks;
 
-    private void Update() => GenerateChunks();
+    private void Update()
+    {
+        playerPos = player.position;
+        GenerateChunks();
+    }
 
     private void Awake()
     {
         Vector2Int newChunkCoords = GetChunkCoordFromPosition(playerPos);
         PickForm newChunk = Instantiate(chunks[Random.Range(0, chunks.Count)], new Vector3(newChunkCoords.x, 0, newChunkCoords.y), Quaternion.identity).GetComponent<PickForm>();
         generatedChunks.Add(newChunkCoords);
+        newChunk.ChooseForm(0);
     }
 
     private void GenerateChunks()

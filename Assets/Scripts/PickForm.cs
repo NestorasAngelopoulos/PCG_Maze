@@ -13,16 +13,16 @@ public class PickForm : MonoBehaviour
         switch (incomingDirection)
         {
             case 0:
-                Instantiate(UpIncoming[Random.Range(0, UpIncoming.Count)], transform.position, transform.rotation);
+                Instantiate(UpIncoming[Random.Range(0, UpIncoming.Count)], transform.position, transform.rotation, transform);
                 break;
             case 1:
-                Instantiate(DownIncoming[Random.Range(0, DownIncoming.Count)], transform.position, transform.rotation);
+                Instantiate(DownIncoming[Random.Range(0, DownIncoming.Count)], transform.position, transform.rotation, transform);
                 break;
             case 2:
-                Instantiate(RightIncoming[Random.Range(0, RightIncoming.Count)], transform.position, transform.rotation);
+                Instantiate(RightIncoming[Random.Range(0, RightIncoming.Count)], transform.position, transform.rotation, transform);
                 break;
             case 3:
-                Instantiate(LeftIncoming[Random.Range(0, LeftIncoming.Count)], transform.position, transform.rotation);
+                Instantiate(LeftIncoming[Random.Range(0, LeftIncoming.Count)], transform.position, transform.rotation, transform);
                 break;
         }
     }
