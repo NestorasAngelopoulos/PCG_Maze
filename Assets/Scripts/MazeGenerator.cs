@@ -3,70 +3,32 @@ using UnityEngine;
 
 public class MazeGenerator : MonoBehaviour
 {
-    [SerializeField] private Vector3 chunkDimentions = new Vector3(1f, 0.1f, 1f);
+    [SerializeField] private Vector3 chunkDimentions = new Vector3(1f, 1f, 1f);
 
     private List<Vector2Int> generatedChunks = new List<Vector2Int>();
 
-
     [SerializeField] private Transform player;
-    [SerializeField] private Vector3 playerPos;
 
-    [SerializeField] private List<GameObject> chunks;
+    [SerializeField] private GameObject subMaze;
+    
+    private void Awake() => GenerateChunk(Vector2Int.zero);
+    private void Update() => GenerateAdjacentChunks();
 
-    private void Update()
+    private void GenerateAdjacentChunks()
     {
-        playerPos = player.position;
-        GenerateChunks();
+        // If the chunk hasn't been generated, generate a new chunk, making sure it is accessible from the player's current chunk
+        if (!generatedChunks.Contains(GetChunkCoordFromPosition(player.position + Vector3.forward * chunkDimentions.z))) GenerateChunk(Vector2Int.up);
+        if (!generatedChunks.Contains(GetChunkCoordFromPosition(player.position - Vector3.forward * chunkDimentions.z))) GenerateChunk(Vector2Int.down);
+        if (!generatedChunks.Contains(GetChunkCoordFromPosition(player.position + Vector3.right * chunkDimentions.x))) GenerateChunk(Vector2Int.right);
+        if (!generatedChunks.Contains(GetChunkCoordFromPosition(player.position - Vector3.right * chunkDimentions.x))) GenerateChunk(Vector2Int.left);
     }
 
-    private void Awake()
+    private void GenerateChunk(Vector2Int direction)
     {
-        Vector2Int newChunkCoords = GetChunkCoordFromPosition(playerPos);
-        PickForm newChunk = Instantiate(chunks[Random.Range(0, chunks.Count)], new Vector3(newChunkCoords.x, 0, newChunkCoords.y), Quaternion.identity).GetComponent<PickForm>();
-        generatedChunks.Add(newChunkCoords);
-        newChunk.ChooseForm(0);
-    }
-
-    private void GenerateChunks()
-    {
-        Vector2Int currentCoord = GetChunkCoordFromPosition(playerPos);
-        Vector2Int newChunkCoords = new();
-
-        // Up
-        if (!generatedChunks.Contains(GetChunkCoordFromPosition(playerPos + Vector3.forward * chunkDimentions.z)))
-        {
-            newChunkCoords = currentCoord + new Vector2Int(0, 1);
-            PickForm newChunk = Instantiate(chunks[Random.Range(0, chunks.Count)], new Vector3(newChunkCoords.x, 0, newChunkCoords.y), Quaternion.identity).GetComponent<PickForm>();
-            generatedChunks.Add(newChunkCoords);
-            newChunk.ChooseForm(0);
-        }
-
-        // Down
-        if (!generatedChunks.Contains(GetChunkCoordFromPosition(playerPos - Vector3.forward * chunkDimentions.z)))
-        {
-            newChunkCoords = currentCoord + new Vector2Int(0, -1);
-            PickForm newChunk = Instantiate(chunks[Random.Range(0, chunks.Count)], new Vector3(newChunkCoords.x, 0, newChunkCoords.y), Quaternion.identity).GetComponent<PickForm>();
-            generatedChunks.Add(newChunkCoords);
-            newChunk.ChooseForm(1);
-        }
-
-        // Right
-        if (!generatedChunks.Contains(GetChunkCoordFromPosition(playerPos + Vector3.right * chunkDimentions.x)))
-        {
-            newChunkCoords = currentCoord + new Vector2Int(1, 0);
-            PickForm newChunk = Instantiate(chunks[Random.Range(0, chunks.Count)], new Vector3(newChunkCoords.x, 0, newChunkCoords.y), Quaternion.identity).GetComponent<PickForm>();
-            generatedChunks.Add(newChunkCoords);
-            newChunk.ChooseForm(2);
-        }
-        
-        // Left
-        if (!generatedChunks.Contains(GetChunkCoordFromPosition(playerPos - Vector3.right * chunkDimentions.x)))
-        {
-            newChunkCoords = currentCoord + new Vector2Int(-1, 0);
-            PickForm newChunk = Instantiate(chunks[Random.Range(0, chunks.Count)], new Vector3(newChunkCoords.x, 0, newChunkCoords.y), Quaternion.identity).GetComponent<PickForm>();
-            generatedChunks.Add(newChunkCoords);
-            newChunk.ChooseForm(3);
-        }
+        Vector2Int chunkCoords = GetChunkCoordFromPosition(player.position) + direction;
+        MazeChunk newChunk = Instantiate(subMaze, new Vector3(chunkCoords.x, 0, chunkCoords.y), Quaternion.identity, transform).GetComponent<MazeChunk>();
+        generatedChunks.Add(chunkCoords);
+        newChunk.ChooseForm(direction);
     }
 
     private Vector2Int GetChunkCoordFromPosition(Vector3 position)

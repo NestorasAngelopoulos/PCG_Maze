@@ -44,29 +44,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 101521db1e27f0a47ad5f6c0758c7d9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UpIncoming:
+  startChunk: {fileID: 3867577358728013441, guid: 9c8f7895365542c4f9cac15713a4dcf6, type: 3}
+  UpEntrance:
   - {fileID: 3867577358728013441, guid: 9179848684cc2354491a81f5fbd0ec6e, type: 3}
   - {fileID: 3867577358728013441, guid: 7a935b12ebc8cf7419c880fab2de5e12, type: 3}
   - {fileID: 3867577358728013441, guid: f0d38459148d34f438141130db80bc83, type: 3}
   - {fileID: 3867577358728013441, guid: fc494d343ee0d524da5c1b6ff906d656, type: 3}
   - {fileID: 3867577358728013441, guid: 17b943050ac761b43b51b650b0a9a9dc, type: 3}
   - {fileID: 3867577358728013441, guid: 9c8f7895365542c4f9cac15713a4dcf6, type: 3}
-  DownIncoming:
+  DownEntrance:
   - {fileID: 3867577358728013441, guid: 7a935b12ebc8cf7419c880fab2de5e12, type: 3}
   - {fileID: 3867577358728013441, guid: c1ceb2c5e382d47489b5265bebb56a7a, type: 3}
+  - {fileID: 3867577358728013441, guid: e7a7785dbee1304488f9ff543332d7fe, type: 3}
   - {fileID: 3867577358728013441, guid: 494a1f1251d6ed24ab7ecbe0129bf46b, type: 3}
   - {fileID: 3867577358728013441, guid: 012e49b4431ef4249b18d445279d441b, type: 3}
+  - {fileID: 3867577358728013441, guid: c103157b1245ecc4f93d2939881f7e3c, type: 3}
   - {fileID: 3867577358728013441, guid: 17b943050ac761b43b51b650b0a9a9dc, type: 3}
   - {fileID: 3867577358728013441, guid: 9c8f7895365542c4f9cac15713a4dcf6, type: 3}
-  RightIncoming:
+  RightEntrance:
   - {fileID: 3867577358728013441, guid: 9179848684cc2354491a81f5fbd0ec6e, type: 3}
   - {fileID: 3867577358728013441, guid: f0d38459148d34f438141130db80bc83, type: 3}
-  - {fileID: 3867577358728013441, guid: c1ceb2c5e382d47489b5265bebb56a7a, type: 3}
   - {fileID: 3867577358728013441, guid: 494a1f1251d6ed24ab7ecbe0129bf46b, type: 3}
   - {fileID: 3867577358728013441, guid: fc494d343ee0d524da5c1b6ff906d656, type: 3}
   - {fileID: 3867577358728013441, guid: 012e49b4431ef4249b18d445279d441b, type: 3}
   - {fileID: 3867577358728013441, guid: 9c8f7895365542c4f9cac15713a4dcf6, type: 3}
-  LeftIncoming:
+  LeftEntrance:
   - {fileID: 3867577358728013441, guid: e7a7785dbee1304488f9ff543332d7fe, type: 3}
   - {fileID: 3867577358728013441, guid: 012e49b4431ef4249b18d445279d441b, type: 3}
   - {fileID: 3867577358728013441, guid: c103157b1245ecc4f93d2939881f7e3c, type: 3}
